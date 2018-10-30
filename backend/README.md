@@ -17,4 +17,6 @@ Setup:
     export FLASK_APP=server.py
     flask run # server is running at port 5000
     ``` 
-
+Download dependency:
+    `pip install [name of your dependency]`
+    `pip freeze > requirements.txt # saving dependency to requirements.txt so that other people can easily download them later`
