@@ -15,6 +15,6 @@ Setup:
     # start the app
     export FLASK_ENV=development # You should use the development env
     export FLASK_APP=server.py
-    flask run
+    flask run # server is running at port 5000
     ``` 
 
