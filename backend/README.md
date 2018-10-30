@@ -8,8 +8,8 @@ Setup:
         virtualenv
         
     ```
-    virtualenv apetite # create virtual env
-    source apetite/bin/activate # activate virtual env. It is for MacOS
+    virtualenv venv # create virtual env
+    source venv/bin/activate # activate virtual env. It is for MacOS
     pip install -r requirement.txt # download dependencies
     
     # start the app
