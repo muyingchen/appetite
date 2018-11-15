@@ -13,4 +13,3 @@ class CollectParent:
         collect function should start collect data and pass to the proper data pipeline
         """
         pass
-
