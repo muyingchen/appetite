@@ -22,7 +22,7 @@ def form():
 
 @app.route('/getprediction')
 def dashboard():
-    inventory_name = 'apple'
+    inventory_name = request.args.get('inventory_name')
     prediction_data = [22, 20, 12, 13, 15, 14, 17]
     inventory = [20, 19, 12, 14, 13, 12, 15]
     return render_template("dashboard.html",
