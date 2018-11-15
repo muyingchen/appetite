@@ -25,20 +25,23 @@ def form():
 def dashboard():
     inventory_name = request.args.get('inventory_name') or "banana"
     inventory_name = inventory_name[0].upper() + inventory_name[1:]
+    random_inventory_number = random.randint(2, 6)
+
     prediction_data = []
     for _ in range(7):
         prediction_ran_num = random.randint(18, 28)
         prediction_data.append(prediction_ran_num)
 
     inventory = []
-    for _ in range(7):
+    for _ in range(random_inventory_number):
         inventory_ran_num = random.randint(15, 22)
         inventory.append(inventory_ran_num)
 
     return render_template("dashboard.html",
                            prediction_data=prediction_data,
                            inventory=inventory,
-                           inventory_name=inventory_name
+                           inventory_name=inventory_name,
+                           random_inventory_number=random_inventory_number
                            )
 
 @app.route('/collect')
