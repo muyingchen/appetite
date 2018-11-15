@@ -23,7 +23,8 @@ def form():
 
 @app.route('/getprediction')
 def dashboard():
-    inventory_name = request.args.get('inventory_name')
+    inventory_name = request.args.get('inventory_name') or "banana"
+    inventory_name = inventory_name[0].upper() + inventory_name[1:]
     prediction_data = []
     for _ in range(7):
         prediction_ran_num = random.randint(18, 28)
