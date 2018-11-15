@@ -16,9 +16,20 @@ app.static_folder = os.path.join(frontend_dir, 'static')
 def hello_world():
     return 'Hello, World!'
 
+@app.route('/form')
+def form():
+    return render_template("form.html")
+
 @app.route('/getprediction')
 def dashboard():
-    return render_template("dashboard.html")
+    inventory_name = 'apple'
+    prediction_data = [22, 20, 12, 13, 15, 14, 17]
+    inventory = [20, 19, 12, 14, 13, 12, 15]
+    return render_template("dashboard.html",
+                           prediction_data=prediction_data,
+                           inventory=inventory,
+                           inventory_name=inventory_name
+                           )
 
 @app.route('/collect')
 def collect_api():
