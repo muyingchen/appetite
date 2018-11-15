@@ -108,12 +108,40 @@
             </ul>
           </div>
         </nav>
+        
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Select items</h1>
-            <!-- Add form here -->
-          </div>
+
+          <h1 class="h2">Select items</h1>
+          <br>
+
+          <form style="width: 85%">
+              <div class="form-group">
+                <label for="inventory_name">Inventory Name *</label>
+                <input type="email" class="form-control" id="inventory_name" aria-describedby="emailHelp" placeholder="Enter inventory item name">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+              </div>
+              
+              <div class="form-group">
+                <label for="weather">Weather</label>
+                <input type="weather" class="form-control" id="weather" placeholder="70">
+              </div>
+
+              <div class="form-group">
+                  <label for="location">Location</label>
+                  <input type="location" class="form-control" id="location" placeholder="Berkeley, CA">
+                </div>
+              
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input type="checkbox" class="form-check-input">
+                  Check me out
+                </label>
+              </div>
+              <input type="button" type="submit" class="btn btn-primary" value="Submit" onclick="
+                var inventory_name = document.getElementById('inventory_name').value;
+                window.location.href='/getprediction?inventory_name=' + inventory_name;"> 
+            </form>
 
           <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
         </main>
