@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 from backend.config import Config
 import sqlite3
 import os
+import random
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -23,8 +24,16 @@ def form():
 @app.route('/getprediction')
 def dashboard():
     inventory_name = request.args.get('inventory_name')
-    prediction_data = [22, 20, 12, 13, 15, 14, 17]
-    inventory = [20, 19, 12, 14, 13, 12, 15]
+    prediction_data = []
+    for _ in range(7):
+        prediction_ran_num = random.randint(18, 28)
+        prediction_data.append(prediction_ran_num)
+
+    inventory = []
+    for _ in range(7):
+        inventory_ran_num = random.randint(15, 22)
+        inventory.append(inventory_ran_num)
+
     return render_template("dashboard.html",
                            prediction_data=prediction_data,
                            inventory=inventory,
