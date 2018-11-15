@@ -37,37 +37,37 @@
             </ul>
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active" href="#">
+                <a class="nav-link active" href="/form">
                   <span data-feather="home"></span>
                   Inventory <span class="sr-only">(current)</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/form">
                   <span data-feather="file"></span>
                   Orders
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/form">
                   <span data-feather="shopping-cart"></span>
                   Products
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/form">
                   <span data-feather="users"></span>
                   Customers
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/form">
                   <span data-feather="bar-chart-2"></span>
                   Reports
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/form">
                   <span data-feather="layers"></span>
                   Integrations
                 </a>
@@ -143,9 +143,9 @@
                   <tr>
                     <td>{{ '11/0' + "{}".format(i+1) + '/2018' }}</td>
                     <td>{{inventory_name}}</td>
-                    <td>{{inventory[i]}}</td>
                     <td>{{prediction_data[i]}}</td>
-                    <td>{{prediction_data[i] - inventory[i]}}</td>
+                    <td>{{inventory[i] if i < random_inventory_number else 0}}</td>
+                    <td>{{prediction_data[i] - inventory[i] if i < random_inventory_number else prediction_data[i]}}</td>
                   </tr>
                 {% endfor %}
                 <!--<tr>-->
