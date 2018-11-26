@@ -3,6 +3,7 @@ from backend.config import Config
 import sqlite3
 import os
 import random
+from backend.src.interface.collector_interface import CollectorInterface
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -12,6 +13,9 @@ static_dir = os.path.join(frontend_dir, 'static')
 template_dir = os.path.join(frontend_dir, 'templates')
 app = Flask(__name__, template_folder=template_dir)
 app.static_folder = os.path.join(frontend_dir, 'static')
+
+data_dir = os.path.join(os.path.dirname(app.instance_path), 'backend', 'data')
+csv_path = "{}/data.csv".format(data_dir)
 
 @app.route('/')
 def hello_world():
@@ -46,11 +50,8 @@ def dashboard():
 
 @app.route('/collect')
 def collect_api():
-    """
-    collector_interface = CollectorInterface()
-    collector_interface.setType("facebook")
-    collector_interface.collect()
-    """
+    collector = CollectorInterface(csv_path)
+    collector.build_csv()
     return "Hello, Collect!"
 
 @app.route('/train')
