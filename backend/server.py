@@ -4,6 +4,10 @@ import sqlite3
 import os
 import random
 from backend.src.interface.collector_interface import CollectorInterface
+from backend.src.train.trainer import Trainer
+from sklearn import linear_model
+import pickle
+import datetime
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -18,6 +22,7 @@ data_dir = os.path.join(os.path.dirname(app.instance_path), 'backend', 'data')
 csv_path = "{}/data.csv".format(data_dir)
 weather_path = "{}/weather.csv".format(data_dir)
 gt_path = "{}/google_trend_five_years.csv".format(data_dir)
+pickle_path = "{}/model.pickle".format(data_dir)
 
 @app.route('/')
 def hello_world():
@@ -32,6 +37,11 @@ def dashboard():
     inventory_name = request.args.get('inventory_name') or "banana"
     inventory_name = inventory_name[0].upper() + inventory_name[1:]
     random_inventory_number = random.randint(2, 6)
+    with open(pickle_path, 'rb') as pk:
+        trainer = pickle.load(pk)
+
+    datetime
+    prediction = trainer.predict({'DATE': [], 'TAVG': [], 'TMAX': [], 'TMIN': [], 'STRAWBERRIES': []})
 
     prediction_data = []
     for _ in range(7):
@@ -62,7 +72,17 @@ def train_api():
     training_interface = TrainingInterface()
     training_interface.train()
     """
-    return "Hello, Train!"
+    trainer = Trainer(model=linear_model.Ridge, label='TRANSACTION')
+
+    trainer.feed_csv(weather_path, columns=['TAVG', 'DATE', 'TMIN', 'TMAX'])
+    trainer.feed_csv(gt_path, columns=['STRAWBERRIES', 'DATE', 'TRANSACTION'])
+
+    print('Training in progress')
+    trainer.train()
+
+    with open(pickle_path, 'wb') as pk:
+        pickle.dump(trainer, pk)
+    return "Training is succesfully done."
 
 @app.route('/getPrediction')
 def prediction_query():
@@ -70,6 +90,7 @@ def prediction_query():
     prediction_interface = PreidctionInterface()
     prediction_interface.returnModel("food")
     """
-    return "Hello prediction"
+    trainer = pickle.load(pickle_path)
+
 
 
