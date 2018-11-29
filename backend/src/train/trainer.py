@@ -110,7 +110,6 @@ class Trainer:
         self.regular_data = []
         self.test_data = []
         self.dataframe = None
-
 # example code
 
 # trainer = Trainer(model=linear_model.Ridge, label='TAVG')
