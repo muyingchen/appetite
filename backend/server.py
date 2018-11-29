@@ -26,9 +26,9 @@ pickle_path = "{}/model.pickle".format(data_dir)
 
 @app.route('/')
 def hello_world():
-    return 'Hello, World!'
+    return render_template('index.html')
 
-@app.route('/form')
+@app.route('/demo')
 def form():
     return render_template("form.html")
 
@@ -40,8 +40,8 @@ def dashboard():
     with open(pickle_path, 'rb') as pk:
         trainer = pickle.load(pk)
 
-    datetime
-    prediction = trainer.predict({'DATE': [], 'TAVG': [], 'TMAX': [], 'TMIN': [], 'STRAWBERRIES': []})
+    #datetime
+    #prediction = trainer.predict({'DATE': [], 'TAVG': [], 'TMAX': [], 'TMIN': [], 'STRAWBERRIES': []})
 
     prediction_data = []
     for _ in range(7):

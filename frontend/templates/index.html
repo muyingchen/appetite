@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<style>
+    body {
+        height: auto;
+        margin: 0;
+        color: white;
+        background-image: -webkit-radial-gradient(100% 100%,ellipse farthest-side,#076585 30%,#00467F 120%);
+        background-image: radial-gradient(ellipse farthest-side at 100% 100%,#076585 30%,#00467F 120%);
+        font-family: 'Lato', sans-serif;
+    }
+
+    .top {
+        height: 100vh;
+    }
+
+    h3 {
+        font-size: 30px;
+        font-weight: 800;
+        color: white;
+        line-height: 1.4;
+        margin-top: 50px;
+        text-transform: uppercase;
+    }
+
+    h1 {
+        font-size: 30px;
+        font-weight: 300;
+        color: white;
+        line-height: 1.4;
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+
+    .demo {
+        -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+        -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+        box-sizing: border-box;
+        height: 50px;
+        width: 150px;
+        background: #f12711;
+        border-radius: 10px;
+        font-weight: 800;
+        font-size: 14px;
+        color: white;
+        border: none;
+        margin: 50px auto 0px auto;
+        display: table;
+    }
+
+    .centered {
+        text-align: center;
+    }
+
+</style>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Merapply</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+</head>
+<body>
+    <div class="top">
+        <div class="intro">
+            <h1>appetite</h1>
+            <h3 class="centered">Intelligently Manage Your Inventory</h3>
+            <p class="centered">by utilizing the millions of data points available at your fingerprints</p>
+            <button class="centered demo">Demo</button>
+        </div>
+    </div>
+</body>
+<script>
+
+document.getElementsByClassName('demo')[0].addEventListener('click', function() {
+    window.location.href='/demo';
+});
+
+</script>
+</html>
