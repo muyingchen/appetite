@@ -5,7 +5,7 @@ class CSVManager:
     """
     CSV Manager contains functions for csv writer & csv reader
     """
-    def __init__(self, csv_file_path, fields):
+    def __init__(self, csv_file_path, fields=[]):
         """
         Define config information for csv file
         Args:
@@ -29,7 +29,7 @@ class CSVManager:
             csvfile.close()
         else:
             print("create_file is not executed since file already exists")
-        
+
 
     def write_line(self, data):
         """
