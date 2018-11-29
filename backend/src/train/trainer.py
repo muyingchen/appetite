@@ -2,13 +2,8 @@ import numpy as np
 import pandas as pd
 import random
 import matplotlib.pyplot as plt
-from sklearn.model_selection import train_test_split
-import os
-import sys
 from sklearn import linear_model
-import time
 import datetime
-from backend.server import weather_path
 from backend.src.data_provider.csv_manager import CSVManager
 import warnings
 
@@ -17,12 +12,12 @@ plt.rcParams['figure.figsize'] = 14, 10
 
 
 class Trainer:
-    def __init__(self, model=linear_model.Ridge, label='y'):
+    def __init__(self, model_type=linear_model.Ridge, label='y'):
         self.columns = []
         self.regular_data = []
         self.test_data = []
         self.dataframe = None
-        self.model_type = model
+        self.model_type = model_type
         self.model = None
         self.label = label
         self.read_file = []
@@ -79,6 +74,7 @@ class Trainer:
             raise Exception("model is not trained")
         
         return self.model.predict(features)
+
     
     def show_dataframe_graph(self):
         plt.plot(self.dataframe['DATE'], self.dataframe[self.label], '.', ms=16);

@@ -17,6 +17,7 @@ app.static_folder = os.path.join(frontend_dir, 'static')
 data_dir = os.path.join(os.path.dirname(app.instance_path), 'backend', 'data')
 csv_path = "{}/data.csv".format(data_dir)
 weather_path = "{}/weather.csv".format(data_dir)
+gt_path = "{}/google_trend_five_years.csv".format(data_dir)
 
 @app.route('/')
 def hello_world():
