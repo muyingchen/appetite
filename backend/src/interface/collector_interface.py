@@ -7,8 +7,5 @@ class CollectorInterface:
     def __init__(self, path):
         self.path = path
 
-    def build_csv(self):
-        fields = ['data', 'label', 'actual']
-        csv_manager = CSVManager(self.path, fields)
 
         

@@ -6,13 +6,14 @@ from sklearn import linear_model
 import datetime
 from backend.src.data_provider.csv_manager import CSVManager
 import warnings
+from backend.src.ml_model.inventory_type import inventory_type
 
 warnings.filterwarnings('ignore')
 plt.rcParams['figure.figsize'] = 14, 10
 
 
-class Trainer:
-    def __init__(self, model=linear_model.Ridge, label='y'):
+class InventoryModel:
+    def __init__(self, model=linear_model.Ridge, label='y', inventory_type=inventory_type['strawberry']):
         self.columns = []
         self.dataframe = None
         self.test_dataframe = None
@@ -20,6 +21,7 @@ class Trainer:
         self.model = None
         self.label = label
         self.read_file = []
+        self.inventory_type = inventory_type
 
     def feed_csv(self, path, columns=[]):
         if 'DATE' not in columns:
@@ -99,17 +101,18 @@ class Trainer:
 
         return self.cof.coef_
 
+
     def get_dataframe(self):
         if self.dataframe is None:
             raise Exception("dataframe has not been defined")
 
         return self.dataframe
 
-    def reset(self):
-        self.columns = []
-        self.regular_data = []
-        self.test_data = []
-        self.dataframe = None
+
+    def get_inventory_type(self):
+        return self.inventory_type
+
+
 # example code
 
 # trainer = Trainer(model=linear_model.Ridge, label='TAVG')
