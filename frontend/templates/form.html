@@ -1,6 +1,8 @@
-
 <!doctype html>
 <html lang="en">
+{% extends "layout.html" %}
+{% block head %}
+{{ super() }}
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,31 +12,11 @@
 
     <title>Apetite</title>
 
-    <!-- Bootstrap core CSS -->
-    <!-- <link href="../static/bootstrap-4.0.0-alpha.6-dist/css/bootstrap.min.css" rel="stylesheet"> -->
-    <link rel= "stylesheet" href= "{{ url_for('static', filename='bootstrap-4.0.0-alpha.6-dist/css/bootstrap.min.css')}}">
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <!-- <link href="{{ url_for('static', filename='bootstrap-4.0.0-alpha.6-dist/css/dashboard.css')}}"> -->
-    <!-- <link href="../static/bootstrap-4.0.0-alpha.6-dist/css/dashboard.css" rel="stylesheet"> -->
-    <link rel= "stylesheet" href= "{{ url_for('static',filename='bootstrap-4.0.0-alpha.6-dist/css/dashboard.css')}}">
-  
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,400,700,900" rel="stylesheet">
-    <style>
-      body {
-        height: auto;
-        margin: 0;
-        font-family: 'Lato', sans-serif;
-      }
-    </style>
   </head>
+{% endblock %}
 
   <body>
-    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Appetite</a>
-    </nav>
-
+  {% block content %}
     <div class="container-fluid">
       <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
@@ -120,32 +102,70 @@
         </nav>
         
 
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-1">
 
-          <h1 class="h2">Select items</h1>
+          <h1 class="h2" style="margin: 10px;">Select items</h1>
           <br>
-
-          <form style="width: 85%">
-              <div class="form-group">
-                <label for="inventory_name">Inventory Name *</label>
-                <input type="email" class="form-control" id="inventory_name" aria-describedby="emailHelp" placeholder="Enter inventory item name">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            {% for inventory in inventories %}
+            <div class="card" style="width: 18rem; display: inline-block; margin: 20px">
+              <img class="card-img-top"
+                   src={{ inventory.img }}
+                   alt="Card image cap"
+                   style="height: 15rem; width: 17.5rem;"
+              >
+              <div class="card-body">
+                <h5 class="card-title" style="text-align:center;">{{ inventory.name }}</h5>
               </div>
-              
-              <div class="form-group">
-                <label for="weather">Average Temperature</label>
-                <input type="weather" class="form-control" id="weather" placeholder="70">
-              </div>
+              <ul class="list-group list-group-flush">
+                    <button
+                            type="button"
+                            class="btn btn-primary"
+                            data-toggle="modal"
+                            data-target="#exampleModal"
+                            data-name={{ inventory.name }}>
+                        SELECT
+                    </button>
+              </ul>
+            </div>
+            {% endfor %}
 
-              <div class="form-group">
-                  <label for="location">Location</label>
-                  <input type="location" class="form-control" id="location" placeholder="Berkeley, CA">
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="ModalLabel">Apple</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form style="width: 85%">
+                      <div class="form-group">
+                        <label for="inventory_name">Inventory Name</label>
+                        <input type="email" class="form-control" id="inventory_name" aria-describedby="emailHelp" placeholder="Enter inventory item name">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="weather">Average Temperature</label>
+                        <input type="weather" class="form-control" id="weather" placeholder="70">
+                      </div>
+
+                      <div class="form-group">
+                          <label for="location">Location</label>
+                          <input type="location" class="form-control" id="location" placeholder="Berkeley, CA">
+                        </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <input type="button" type="submit" class="btn btn-primary" value="Submit" onclick="
+                        var inventory_name = document.getElementById('inventory_name').value;
+                        window.location.href='/getprediction?inventory_name=' + inventory_name;">
+                  </div>
                 </div>
-              
-              <input type="button" type="submit" class="btn btn-primary" value="Submit" onclick="
-                var inventory_name = document.getElementById('inventory_name').value;
-                window.location.href='/getprediction?inventory_name=' + inventory_name;"> 
-            </form>
+              </div>
+            </div>
 
           <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
         </main>
@@ -165,6 +185,18 @@
     <script>
       feather.replace()
     </script>
+    <script>
+      $('#exampleModal').on('show.bs.modal', function (event) {
+          var button = $(event.relatedTarget) // Button that triggered the modal
+          var inventory_name = button.data('name')
+          // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+          // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+          var modal = $(this)
+          modal.find('#ModalLabel').text(inventory_name)
+          modal.find('#inventory_name').val(inventory_name);
+       })
+    </script>
 
   </body>
+{% endblock %}
 </html>
