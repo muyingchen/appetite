@@ -11,8 +11,23 @@
     <!-- <link rel="icon" href="../../../../favicon.ico"> -->
 
     <title>Dashboard Template for Bootstrap</title>
-    
-  </head>
+
+    <style>
+        .loader {
+        border: 16px solid #f3f3f3; /* Light grey */
+        border-top: 16px solid #3498db; /* Blue */
+        border-radius: 50%;
+        width: 120px;
+        height: 120px;
+        animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+        }
+    </style>
+    </head>
 {% endblock %}
 
 {% block content %}
@@ -22,11 +37,6 @@
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
           <div class="sidebar-sticky">
             <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-            <ul class="navbar-nav px-3">
-                <li class="nav-item text-nowrap">
-                    <a class="nav-link" href="#">Sign out</a>
-                </li>
-            </ul>
             <ul class="nav flex-column">
               <li class="nav-item">
                 <a class="nav-link active" href="/getprediction?inventory_name=apple">
@@ -115,6 +125,10 @@
               </button>
             </div>
           </div>
+          <div class="alert alert-info" role="alert">
+            <h4 class="alert-heading">Insight</h4>
+            <p>{{ recommendation_statement }}</p>
+          </div>
 
           <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
 
@@ -164,42 +178,42 @@
     <!-- Graphs -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
     <script>
-      var ctx = document.getElementById("myChart");
-      var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-          datasets: [
-            {
-              label: 'Inventory',
-              data: {{inventory}},
-              lineTension: 0,
-              borderColor: 'transparent',
-              borderWidth: 4,
-              pointBackgroundColor: '#007bff'
+          var ctx = document.getElementById("myChart");
+          var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+              datasets: [
+                {
+                  label: 'Inventory',
+                  data: {{inventory}},
+                  lineTension: 0,
+                  borderColor: 'transparent',
+                  borderWidth: 4,
+                  pointBackgroundColor: '#007bff'
+                },
+                {
+                  label: 'Prediction',
+                  backgroundColor: 'transparent',
+                  borderColor: 'red',
+                  data: {{prediction_data}},
+                  type: 'line'
+                }
+              ]
             },
-            {
-              label: 'Prediction',
-              backgroundColor: 'transparent',
-              borderColor: 'red',
-              data: {{prediction_data}},
-              type: 'line'
-            }
-          ]
-        },
-        options: {
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero: true
+            options: {
+              scales: {
+                yAxes: [{
+                  ticks: {
+                    beginAtZero: true
+                  }
+                }]
+              },
+              legend: {
+                display: true,
               }
-            }]
-          },
-          legend: {
-            display: true,
-          }
-        }
-      });
+            }
+          });
     </script>
   {% endblock %}
   </body>

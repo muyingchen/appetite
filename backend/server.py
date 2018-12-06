@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 from backend.config import Config, dir_path
 from backend.src.ml_model.model_utils import get_model, save_model, is_valid_model
+from backend.src.analysis.inventory_analysis import generate_recommendation_statement
 
 from backend.src.ml_model.inventory_model import InventoryModel
 from sklearn import linear_model
@@ -28,7 +29,7 @@ weather_path = "{}/weather.csv".format(data_dir)
 gt_path = "{}/google_trend_five_years.csv".format(data_dir)
 
 # deployed_model
-models = {}
+deployed_models = {}
 
 @app.route('/')
 def index():
@@ -66,8 +67,14 @@ def dashboard():
     inventory_type = inventory_name.lower()
     model = None
 
-    if is_valid_model(inventory_type):
-        model = get_model(inventory_type)
+    if inventory_type not in deployed_models:
+        print('trying to load a model')
+        if is_valid_model(inventory_type):
+            model = get_model(inventory_type)
+            deployed_models[inventory_type] = model
+    else:
+        print('loading model from deployment')
+        model = deployed_models[inventory_type]
 
     #datetime
     #prediction = trainer.predict({'DATE': [], 'TAVG': [], 'TMAX': [], 'TMIN': [], 'STRAWBERRIES': []})
@@ -82,11 +89,14 @@ def dashboard():
         inventory_ran_num = random.randint(18, 22)
         inventory.append(inventory_ran_num)
 
+    recommendation_statement = generate_recommendation_statement(inventory, inventory_name=inventory_type)
+
     return render_template("dashboard.html",
                                prediction_data=prediction_data,
                                inventory=inventory,
                                inventory_name=inventory_name,
-                               random_inventory_number=random_inventory_number
+                               random_inventory_number=random_inventory_number,
+                               recommendation_statement=recommendation_statement
                            )
 
 
@@ -130,7 +140,7 @@ def deploy_model_api():
     if is_valid_model(inventory_name):
         model = get_model(inventory_name)
 
-    models[inventory_name] = model
+    deployed_models[inventory_name] = model
     return "Deployment of {} model is successfully done.".format(inventory_name)
 
 
