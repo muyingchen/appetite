@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f9729aa4-a946-4456-af08-6fe747930260" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/src/analysis/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/analysis/inventory_analysis.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/server.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/templates/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/templates/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/templates/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/templates/form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/ml_model/inventory_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/ml_model/inventory_model.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,8 +17,8 @@
       <file leaf-file-name="server.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1175">
-              <caret line="87" column="44" lean-forward="true" selection-start-line="87" selection-start-column="44" selection-end-line="87" selection-end-column="44" />
+            <state relative-caret-position="2250">
+              <caret line="87" column="44" selection-start-line="87" selection-start-column="44" selection-end-line="87" selection-end-column="44" />
               <folding>
                 <element signature="e#0#49#0" expanded="true" />
               </folding>
@@ -31,57 +26,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/src/analysis/__init__.py">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="inventory_analysis.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/src/analysis/inventory_analysis.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="14" column="62" selection-start-line="14" selection-start-column="62" selection-end-line="14" selection-end-column="62" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/src/interface/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="18">
-                <caret line="1" column="61" selection-start-line="1" selection-start-column="61" selection-end-line="1" selection-end-column="61" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="requirements.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/requirements.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="google_trends_collector.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/src/collector/google_trends_collector.py">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
       <file leaf-file-name="form.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend/templates/form.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="104">
+            <state relative-caret-position="414">
               <caret line="23" column="117" selection-start-line="23" selection-start-column="117" selection-end-line="23" selection-end-column="117" />
               <folding>
                 <element signature="n#style#0;n#h1#0;n#main#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#main#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#0;n#div#0;n#main#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#h5#0;n#div#0;n#div#0;n#main#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="e#4868#4875#1" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -91,7 +45,7 @@
         <entry file="file://$PROJECT_DIR$/frontend/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1260">
-              <caret line="70" column="10" lean-forward="true" selection-start-line="70" selection-start-column="10" selection-end-line="70" selection-end-column="10" />
+              <caret line="70" column="10" selection-start-line="70" selection-start-column="10" selection-end-line="70" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -99,17 +53,61 @@
       <file leaf-file-name="layout.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend/templates/layout.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
+            <state relative-caret-position="504">
               <caret line="28" column="41" selection-start-line="28" selection-start-column="41" selection-end-line="28" selection-end-column="41" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dashboard.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="dashboard.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend/templates/dashboard.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="116" column="38" selection-start-line="116" selection-start-column="38" selection-end-line="116" selection-end-column="38" />
+            <state relative-caret-position="942">
+              <caret line="119" column="38" selection-start-line="119" selection-start-column="38" selection-end-line="119" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pumpkin_google_trend_ten_years.csv" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/data/pumpkin_google_trend_ten_years.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="18">
+              <caret line="1" column="15" lean-forward="true" selection-start-line="1" selection-start-column="15" selection-end-line="1" selection-end-column="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="inventory_model.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/backend/src/ml_model/inventory_model.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="83" lean-forward="true" selection-start-line="83" selection-end-line="83" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="strawberries_google_trend_ten_years.csv" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/data/strawberries_google_trend_ten_years.csv">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="weather.csv" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/data/weather.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="288">
+              <caret line="16" column="35" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="google_trend_five_years.csv" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/data/google_trend_five_years.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="972">
+              <caret line="54" column="15" selection-start-line="54" selection-start-column="15" selection-end-line="54" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -138,6 +136,8 @@
       <find>model_type</find>
       <find>href</find>
       <find>li</find>
+      <find>10-31</find>
+      <find>plt</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -167,7 +167,6 @@
         <option value="$PROJECT_DIR$/backend/src/train/inventorymodel.py" />
         <option value="$PROJECT_DIR$/backend/src/ml_model/model_manager.py" />
         <option value="$PROJECT_DIR$/backend/src/ml_model/model_type.py" />
-        <option value="$PROJECT_DIR$/backend/src/ml_model/inventory_model.py" />
         <option value="$PROJECT_DIR$/backend/config.py" />
         <option value="$PROJECT_DIR$/backend/src/ml_model/model_utils.py" />
         <option value="$PROJECT_DIR$/backend/src/interface/collector_interface.py" />
@@ -180,6 +179,7 @@
         <option value="$PROJECT_DIR$/frontend/templates/index.html" />
         <option value="$PROJECT_DIR$/frontend/templates/form.html" />
         <option value="$PROJECT_DIR$/frontend/templates/dashboard.html" />
+        <option value="$PROJECT_DIR$/backend/src/ml_model/inventory_model.py" />
       </list>
     </option>
   </component>
@@ -208,6 +208,12 @@
               <item name="appetite" type="b2602c69:ProjectViewProjectNode" />
               <item name="appetite" type="462c0819:PsiDirectoryNode" />
               <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="appetite" type="b2602c69:ProjectViewProjectNode" />
+              <item name="appetite" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -216,6 +222,13 @@
               <item name="backend" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="analysis" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="appetite" type="b2602c69:ProjectViewProjectNode" />
+              <item name="appetite" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ml_model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="appetite" type="b2602c69:ProjectViewProjectNode" />
@@ -316,8 +329,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/backend/src/colletor/TwitterCollector.py" />
-    <entry file="file://$PROJECT_DIR$/backend/src/colletor/__init__.py" />
     <entry file="file://$PROJECT_DIR$/backend/src/db_handler/__init__.py" />
     <entry file="file://$PROJECT_DIR$/backend/src/data_provider/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
@@ -403,21 +414,7 @@
     <entry file="file://$PROJECT_DIR$/backend/src/colletor/TwitterCollector.py" />
     <entry file="file://$PROJECT_DIR$/backend/src/colletor/collectParent.py" />
     <entry file="file://$PROJECT_DIR$/backend/src/colletor/data_pipeline_parent.py" />
-    <entry file="file://$PROJECT_DIR$/backend/data/weather.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="35" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/backend/data/data.csv" />
-    <entry file="file://$PROJECT_DIR$/backend/data/google_trend_five_years.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="54" column="15" selection-start-line="54" selection-start-column="15" selection-end-line="54" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/backend/src/db.py" />
     <entry file="file://$PROJECT_DIR$/backend/src/regularization_notebook_v2.ipynb">
       <provider selected="true" editor-type-id="ipnb-editor">
@@ -475,19 +472,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="24" column="35" lean-forward="true" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/ml_model/inventory_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="20" column="25" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -523,15 +507,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/templates/layout.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
+        <state relative-caret-position="504">
           <caret line="28" column="41" selection-start-line="28" selection-start-column="41" selection-end-line="28" selection-end-column="41" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/server.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1175">
-          <caret line="87" column="44" lean-forward="true" selection-start-line="87" selection-start-column="44" selection-end-line="87" selection-end-column="44" />
+        <state relative-caret-position="2250">
+          <caret line="87" column="44" selection-start-line="87" selection-start-column="44" selection-end-line="87" selection-end-column="44" />
           <folding>
             <element signature="e#0#49#0" expanded="true" />
           </folding>
@@ -541,28 +525,61 @@
     <entry file="file://$PROJECT_DIR$/frontend/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1260">
-          <caret line="70" column="10" lean-forward="true" selection-start-line="70" selection-start-column="10" selection-end-line="70" selection-end-column="10" />
+          <caret line="70" column="10" selection-start-line="70" selection-start-column="10" selection-end-line="70" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/templates/form.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
+        <state relative-caret-position="414">
           <caret line="23" column="117" selection-start-line="23" selection-start-column="117" selection-end-line="23" selection-end-column="117" />
           <folding>
             <element signature="n#style#0;n#h1#0;n#main#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#main#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#div#0;n#main#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#h5#0;n#div#0;n#div#0;n#main#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#4868#4875#1" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/templates/dashboard.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="116" column="38" selection-start-line="116" selection-start-column="38" selection-end-line="116" selection-end-column="38" />
+        <state relative-caret-position="942">
+          <caret line="119" column="38" selection-start-line="119" selection-start-column="38" selection-end-line="119" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/data/google_trend_five_years.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="972">
+          <caret line="54" column="15" selection-start-line="54" selection-start-column="15" selection-end-line="54" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/data/strawberries_google_trend_ten_years.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/data/weather.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="16" column="35" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/data/pumpkin_google_trend_ten_years.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="15" lean-forward="true" selection-start-line="1" selection-start-column="15" selection-end-line="1" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/ml_model/inventory_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="83" lean-forward="true" selection-start-line="83" selection-end-line="83" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

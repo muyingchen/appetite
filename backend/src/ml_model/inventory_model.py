@@ -1,7 +1,6 @@
 import numpy as np
 import pandas as pd
 import random
-import matplotlib.pyplot as plt
 from sklearn import linear_model
 import datetime
 from backend.src.data_provider.csv_manager import CSVManager
@@ -9,7 +8,6 @@ import warnings
 from backend.src.ml_model.inventory_type import inventory_type
 
 warnings.filterwarnings('ignore')
-plt.rcParams['figure.figsize'] = 14, 10
 
 
 class InventoryModel:
@@ -83,17 +81,6 @@ class InventoryModel:
 
         return self.model.predict(features)
 
-    def show_dataframe_graph(self):
-        plt.plot(self.dataframe['DATE'], self.dataframe[self.label], '.', ms=16);
-
-    def test(self):
-        prediction = self.model.predict(self.test_dataframe.copy().drop(columns=self.label))
-
-        plt.plot(self.test_dataframe['DATE'], prediction, '.', ms=16);
-        # plt.plot(self.dataframe['DATE'], self.dataframe[self.label], '.', ms=16)
-
-        rss = sum((prediction - self.test_dataframe[self.label]) ** 2) / self.test_dataframe.shape[0]  # num_of_rows
-        print("rss: {}".format(rss))
 
     def get_coef(self):
         if self.model == None:
