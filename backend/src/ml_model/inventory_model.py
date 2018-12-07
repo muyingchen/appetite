@@ -1,9 +1,19 @@
 import numpy as np
 import pandas as pd
 import random
+
 from sklearn import linear_model
-import datetime
+from sklearn.linear_model import LogisticRegression
+from sklearn.svm import SVR
+from sklearn.linear_model import ElasticNet
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+
+from backend.src.ml_model.inventory_type import inventory_type
 from backend.src.data_provider.csv_manager import CSVManager
+
+import datetime
 import warnings
 from backend.src.ml_model.inventory_type import inventory_type
 
@@ -73,6 +83,12 @@ class InventoryModel:
         self.model = self.model_type(alpha=alpha)
 
         features = self.dataframe.copy().drop(columns=self.label)
+
+        # normalize the value
+        scaler = StandardScaler()
+        scaler.fit(features)
+        features = scaler.transform(features)
+
         self.cof = self.model.fit(features, self.dataframe[self.label])
 
     def predict(self, features):
