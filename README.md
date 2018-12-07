@@ -4,6 +4,12 @@ Amazoogle project code
 ## Python version
 Python 3.6
 
+## One command start
+```
+chmod +x start.sh
+./start.sh
+```
+
 ## Quick start
 To set up Python virtual environment and download project requirements, run the following:
 ```
