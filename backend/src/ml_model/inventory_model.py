@@ -3,14 +3,8 @@ import pandas as pd
 import random
 
 from sklearn import linear_model
-from sklearn.linear_model import LogisticRegression
-from sklearn.svm import SVR
-from sklearn.linear_model import ElasticNet
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
-from backend.src.ml_model.inventory_type import inventory_type
 from backend.src.data_provider.csv_manager import CSVManager
 
 import datetime
@@ -32,9 +26,6 @@ class InventoryModel:
         self.inventory_type = inventory_type
 
     def feed_csv(self, path, columns=[]):
-        if 'DATE' not in columns:
-            raise Exception("Include DATE as a field")
-
         if path in self.read_file:
             raise Exception("You cannot read the same file twice. {} is already fed to this class".format(path))
 
@@ -46,24 +37,13 @@ class InventoryModel:
         csv_data = csv_manager.read()
 
         csv_data_len = int(len(csv_data))
-        csv_data, csv_test_data = csv_data[:csv_data_len - 365], csv_data[csv_data_len - 365:]
 
         def create_data_frame(csv_data, df):
             # get data per column to feed dataframe
             data_per_column = []
             for column in columns:
-                # timestamp is handled specially
-                if column == 'DATE':
-                    timestamps = [datetime.datetime.strptime(data['DATE'], "%Y-%m-%d").month * 100
-                                  + datetime.datetime.strptime(data['DATE'], "%Y-%m-%d").day
-                                  for data in csv_data]
-                    data_per_column.append(timestamps)
-                elif column == 'TRANSACTION':
-                    data_at_column = [int(data['STRAWBERRIES']) + random.randint(-3, 3) for data in csv_data]
-                    data_per_column.append(data_at_column)
-                else:
-                    data_at_column = [int(data[column]) for data in csv_data]
-                    data_per_column.append(data_at_column)
+                data_at_column = [int(float(data[column])) for data in csv_data]
+                data_per_column.append(data_at_column)
 
             # merge new dataframe to the previous dataframe
             new_dataframe = pd.DataFrame(np.column_stack(data_per_column), columns=columns)
@@ -74,13 +54,11 @@ class InventoryModel:
 
         # training_data ==================================================
         self.dataframe = create_data_frame(csv_data, self.dataframe)
-        # testing_data =======================================================
-        self.test_dataframe = create_data_frame(csv_test_data, self.test_dataframe)
 
         self.read_file.append(path)
 
-    def train(self, alpha=.1):
-        self.model = self.model_type(alpha=alpha)
+    def train(self, C=1, cache_size=500, epsilon=1, kernel='rbf'):
+        self.model = self.model_type(C=C, cache_size=cache_size, epsilon=epsilon, kernel=kernel)
 
         features = self.dataframe.copy().drop(columns=self.label)
 
@@ -94,6 +72,10 @@ class InventoryModel:
     def predict(self, features):
         if self.model is None:
             raise Exception("model is not trained")
+        # normalize the value
+        scaler = StandardScaler()
+        scaler.fit(features)
+        features = scaler.transform(features)
 
         return self.model.predict(features)
 

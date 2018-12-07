@@ -1,13 +1,17 @@
 from flask import Flask, render_template, request
+
+from sklearn.svm import SVR
+
 from backend.config import Config, dir_path
 from backend.src.ml_model.model_utils import get_model, save_model, is_valid_model
 from backend.src.analysis.inventory_analysis import generate_recommendation_statement
 
 from backend.src.ml_model.inventory_model import InventoryModel
-from sklearn import linear_model
+from backend.src.interface.prediction_interface import PredictionInterface
 
 import os
 import random
+import datetime
 
 # initialize app
 app = Flask(__name__)
@@ -24,12 +28,11 @@ app.static_folder = os.path.join(frontend_dir, 'static')
 
 # setup data path
 data_dir = dir_path['data']
-csv_path = "{}/data.csv".format(data_dir)
-weather_path = "{}/weather.csv".format(data_dir)
-gt_path = "{}/google_trend_five_years.csv".format(data_dir)
+data_path = "{}/main_beer_with_actual_beer_sold.csv".format(data_dir)
 
 # deployed_model
 deployed_models = {}
+prediction_interface = PredictionInterface()
 
 @app.route('/')
 def index():
@@ -76,23 +79,22 @@ def dashboard():
         print('loading model from deployment')
         model = deployed_models[inventory_type]
 
-    #datetime
-    #prediction = trainer.predict({'DATE': [], 'TAVG': [], 'TMAX': [], 'TMIN': [], 'STRAWBERRIES': []})
+    start_date = '2018-11-01'
+    end_date = '2018-11-07'
+    features = prediction_interface.generate_feature_dataframe(start_date=start_date, end_date=end_date)
+    prediction_data = model.predict(features.values)
 
-    prediction_data = []
-    for _ in range(7):
-        prediction_ran_num = random.randint(18, 24)
-        prediction_data.append(prediction_ran_num)
-
-    inventory = []
-    for _ in range(random_inventory_number):
-        inventory_ran_num = random.randint(18, 22)
-        inventory.append(inventory_ran_num)
-
-    recommendation_statement = generate_recommendation_statement(inventory, inventory_name=inventory_type)
+    # Generated data based on google trend
+    inventory = [25, 31, 40, 39]
+    recommendation_statement \
+        = generate_recommendation_statement(inventory, prediction_data,
+                                            start_date,
+                                            end_date,
+                                            inventory_name=inventory_type
+                                            )
 
     return render_template("dashboard.html",
-                               prediction_data=prediction_data,
+                               prediction_data=list(prediction_data),
                                inventory=inventory,
                                inventory_name=inventory_name,
                                random_inventory_number=random_inventory_number,
@@ -109,9 +111,8 @@ Model REST API.
 def predict_api():
     """
     Predict the inventory demand and return as a json data
-
+    We incorporated prediction functionality to /getPrediction, web rendering logic for quick development.
     :param inventory_type
-
     :return: demand of <inventory_type>
     """
     pass
@@ -150,16 +151,28 @@ def train_api():
 
     :return: json data that specifies the training has been successfully done
     """
-    inventory_model = InventoryModel(model=linear_model.Ridge, label='TRANSACTION')
+    inventory_name = request.args.get('inventory_name') or "beer"
+    inventory_model = InventoryModel(model=SVR, label='actual_beer_sold')
 
-    inventory_model.feed_csv(weather_path, columns=['TAVG', 'DATE', 'TMIN', 'TMAX'])
-    inventory_model.feed_csv(gt_path, columns=['STRAWBERRIES', 'DATE', 'TRANSACTION'])
+    inventory_model.feed_csv(data_path,
+                             columns=[
+                                 'beer',
+                                 'TIMESTAMP',
+                                 'Month',
+                                 'day_of_week',
+                                 'is_weekend',
+                                 'Winter',
+                                 'Spring',
+                                 'Summer',
+                                 'Fall',
+                                 'actual_beer_sold'
+                             ])
 
     print('Training in progress...')
-    inventory_model.train()
+    inventory_model.train(C=1, cache_size=500, epsilon=1, kernel='rbf')
 
     # save model
-    save_model(inventory_model, 'strawberry')
+    save_model(inventory_model, inventory_name)
     return "Training is succesfully done."
 
 
