@@ -1,9 +1,14 @@
 # appetite
 Amazoogle project code
 
+## Python version
+Python 3.6
+
 ## Quick start
 To set up Python virtual environment and download project requirements, run the following:
 ```
+apt-get install python3.6 # if you don't have python
+pip install virtualenv
 chmod +x setup.sh
 ```
 Then run the script once. 
