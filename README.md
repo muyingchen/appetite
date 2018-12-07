@@ -2,12 +2,20 @@
 Amazoogle project code
 
 ## Quick start
-Assuming all requirements are installed, to start the app, under this directory, run this once. 
+To set up Python virtual environment and download project requirements, run the following:
+```
+chmod +x setup.sh
+```
+Then run the script once. 
+```
+./setup.sh
+```
+
+Assuming the above code ran smoothly in your local mchine, before starting the web app, under this directory, run this once. 
 ```
 chmod +x run.sh
 ```
-
-Then run this everytime you want to start the app. 
+And run this to start the web app. 
 ```
 ./run.sh
 ```
